@@ -1,0 +1,39 @@
+<!ELEMENT oval_definitions (generator,definitions,tests,objects)>
+<!ELEMENT generator (schema_version,timestamp)>
+<!ELEMENT schema_version (#PCDATA)>
+<!ELEMENT timestamp (#PCDATA)>
+<!ELEMENT definitions (definition)>
+<!ELEMENT definition (metadata,criteria)>
+<!ATTLIST definition id NMTOKEN #REQUIRED>
+<!ATTLIST definition class NMTOKEN #REQUIRED>
+<!ATTLIST definition version NMTOKEN #REQUIRED>
+<!ELEMENT metadata (title,description,reference)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT reference EMPTY>
+<!ATTLIST reference ref_id NMTOKEN #REQUIRED>
+<!ELEMENT criteria (criterion+)>
+<!ATTLIST criteria operator NMTOKEN #REQUIRED>
+<!ELEMENT criterion EMPTY>
+<!ATTLIST criterion comment CDATA #REQUIRED>
+<!ATTLIST criterion test_ref NMTOKEN #REQUIRED>
+<!ELEMENT tests (textfilecontent54_test+)>
+<!ELEMENT textfilecontent54_test (object)>
+<!ATTLIST textfilecontent54_test id NMTOKEN #REQUIRED>
+<!ATTLIST textfilecontent54_test check NMTOKEN #REQUIRED>
+<!ATTLIST textfilecontent54_test check_existence NMTOKEN #REQUIRED>
+<!ATTLIST textfilecontent54_test comment CDATA #REQUIRED>
+<!ATTLIST textfilecontent54_test version NMTOKEN #REQUIRED>
+<!ELEMENT object EMPTY>
+<!ATTLIST object object_ref NMTOKEN #REQUIRED>
+<!ELEMENT objects (textfilecontent54_object+)>
+<!ELEMENT textfilecontent54_object (filepath,pattern,instance)>
+<!ATTLIST textfilecontent54_object id NMTOKEN #REQUIRED>
+<!ATTLIST textfilecontent54_object comment CDATA #REQUIRED>
+<!ATTLIST textfilecontent54_object version NMTOKEN #REQUIRED>
+<!ELEMENT filepath (#PCDATA)>
+<!ELEMENT pattern (#PCDATA)>
+<!ATTLIST pattern operation CDATA #REQUIRED>
+<!ELEMENT instance (#PCDATA)>
+<!ATTLIST instance datatype NMTOKEN #REQUIRED>
+<!ATTLIST instance operation CDATA #IMPLIED>
