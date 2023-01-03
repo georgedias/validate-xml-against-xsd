@@ -24,7 +24,7 @@ console.log("result1:", result1);
 //////////// EXAMPLE /////////////////////////////////
 
 var xml =  '<?xml version="1.0" encoding="UTF-8"?>' +
-           '<root>' +
+           '<Benchmark xmlns="http://checklists.nist.gov/xccdf/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="test">' +
                '<child foo="bar">' +
                    '<grandchild baz="fizbuzz">grandchild content</grandchild>' +
                    '<new_child>' +
@@ -32,20 +32,18 @@ var xml =  '<?xml version="1.0" encoding="UTF-8"?>' +
                     '</new_child>' +
                '</child>' +
                '<sibling>with content!</sibling>' +
-           '</root>';
+           '</Benchmark>';
 
 var xmlDoc = libxmljs.parseXml(xml);
 
 // xpath queries
-var gchild = xmlDoc.get('//ch1');
-
+var gchild = xmlDoc.get('//xmlns:ch1', {'xmlns': 'http://checklists.nist.gov/xccdf/1.1', 'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance'});
 console.log(gchild.text()); 
 
 var children = xmlDoc.childNodes();
 var child = children[0];
-
 console.log(child.attr('foo').value()); // prints "bar"
-
+console.log(child.attr('foo'))
 ////////////////////////////////////////////
 
 
@@ -57,10 +55,15 @@ const xsdDoc = libxmljs.parseXmlString(xsd, {huge: true});
 
 const xccdfFile = fs.readFileSync('./data/xccdf.xml', 'utf8')
 const xccdfXmlDoc = libxmljs.parseXml(xccdfFile, {huge: true});
-console.log("xccdfXmlDoc is", xmlFormat(xccdfXmlDoc.toString()))
+//console.log("xccdfXmlDoc is", xmlFormat(xccdfXmlDoc.toString()))
+
 // xpath queries
-var statuschild = xmlDoc.get('//status', {'xmlns': 'http://checklists.nist.gov/xccdf/1.1', 'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance'});
+var statuschild = xccdfXmlDoc.get('//xmlns:title', {'xmlns': 'http://checklists.nist.gov/xccdf/1.1', 'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance'});
 console.log(statuschild.text()); 
+var children = xmlDoc.childNodes();
+var child = children[0];
+console.log(child.attr('date')); // prints "test"
+
 // let result = xccdfXmlDoc.validate(xsdDoc);
 //console.log("result:", result0);
 
