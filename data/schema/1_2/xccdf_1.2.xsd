@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    xmlns:cdf="http://checklists.nist.gov/xccdf/1.2" xmlns:cpe2="http://cpe.mitre.org/language/2.0"
-    targetNamespace="http://checklists.nist.gov/xccdf/1.2" elementFormDefault="qualified"
-    attributeFormDefault="unqualified" version="1.2.1">
+    xmlns:cdf="http://checklists.nist.gov/xccdf/1.2"
+    xmlns:cpe2="http://cpe.mitre.org/language/2.0"
+    targetNamespace="http://checklists.nist.gov/xccdf/1.2"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    version="1.2.1">
 
     <xsd:annotation>
         <xsd:documentation xml:lang="en"> This schema defines the Extensible Configuration Checklist
